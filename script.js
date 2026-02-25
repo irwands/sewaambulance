@@ -31,7 +31,7 @@ function sendToWA() {
     // Tanda \n untuk Enter (baris baru), * untuk Bold (tebal)
     const text = `*Pemesanan Ambulance*\n\n` +
                  `*Nama:* ${nama}\n` +
-                 `*Kontak:* ${email}\n` +
+                 `*Email:* ${email}\n` +
                  `*Layanan:* ${layanan}\n` +
                  `*Detail Pesan:*\n${ pesan }`;
 
@@ -59,4 +59,5 @@ function sendToWA() {
         link.addEventListener("click", function () {
             navLinks.classList.remove("active");
         });
+
     });
