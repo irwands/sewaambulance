@@ -61,3 +61,93 @@ function sendToWA() {
         });
 
     });
+// === AMBULANCE INTERAKTIF ===
+
+const ambulanceImg = document.querySelector('.ambulance-img');
+const ambulanceWrapper = document.querySelector('.ambulance-wrapper');
+const lights = document.querySelectorAll('.light');
+
+// 1. Hover effect
+ambulanceImg.addEventListener('mouseenter', function() {
+    this.style.transform = 'scale(1.02)';
+});
+
+ambulanceImg.addEventListener('mouseleave', function() {
+    this.style.transform = 'scale(1)';
+});
+
+// 2. Click effect (Klakson)
+ambulanceImg.addEventListener('click', function() {
+    // Efek getar
+    this.style.transition = 'transform 0.1s';
+    this.style.transform = 'scale(1.05)';
+    
+    setTimeout(() => {
+        this.style.transform = 'scale(1)';
+    }, 100);
+    
+    // Lampu menyangat terang
+    lights.forEach(light => {
+        light.style.background = '#ff6666';
+        light.style.boxShadow = '0 0 40px #ff0000, 0 0 80px #ff0000, 0 0 120px #ff0000';
+    });
+    
+    setTimeout(() => {
+        lights.forEach(light => {
+            light.style.background = '#ff0000';
+            light.style.boxShadow = '0 0 20px #ff0000, 0 0 40px #ff0000';
+        });
+    }, 200);
+});
+
+
+// 3. Parallax effect saat scroll
+window.addEventListener('scroll', function() {
+    const scrollY = window.scrollY;
+    const ambulance = document.querySelector('.ambulance-img');
+    
+    if (scrollY > 0 && window.innerWidth > 768) {
+        // Gambar bergerak ke kiri pelan
+        const moveX = scrollY * 0.08;
+        ambulance.style.transform = `translateX(-${moveX}px)`;
+    } else {
+        ambulance.style.transform = 'translateX(0)';
+    }
+});
+
+
+// === SMOOTH SCROLL ===
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+
+// === REVEAL ON SCROLL ===
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    }); 
+}, observerOptions);
+
+document.querySelectorAll('.services').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(50px)';
+    el.style.transition = 'all 0.6s ease';
+    observer.observe(el);
+});
