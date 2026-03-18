@@ -136,7 +136,7 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('https://images.unsplash.com/photo-1584034621565-6546457e6027?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+    background: url(images/background.jpeg);
     background-size: cover;
     background-position: center;
     opacity: 0.15;
@@ -533,7 +533,7 @@ header {
 
 .contact-info {
     flex: 1;
-    background-color: rgb(255, 123, 0);
+    background-color: rgb(4, 71, 255);
     color: white;
     padding: 3rem;
     min-width: 300px;
@@ -629,7 +629,7 @@ textarea.form-control {
 }
 
 .wa-btn {
-    background-color: #25D366; /* Warna WhatsApp */
+    background-color: #0533b3; /* Warna WhatsApp */
     color: white;
     border: none;
     padding: 1rem 2rem;
@@ -646,7 +646,7 @@ textarea.form-control {
 }
 
 .wa-btn:hover {
-    background-color: #128C7E;
+    background-color: #033196;
 }
 
 /* --- FOOTER --- */
@@ -732,5 +732,3 @@ footer {
     height: 100%;
     border: 0;
 }
-
-
